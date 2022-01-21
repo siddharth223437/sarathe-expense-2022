@@ -1,10 +1,8 @@
 <template>
   <div class="relative">
     <div>
-      <label class="absolute top-[-12px] left-[27px] z-10">{{labelText}}</label>
-      <select class="py-1.5 w-full focus:outline-none bg-white border border-solid border-gray-300 shadow px-3
-                  rounded appearance-none block text-base text-gray-700 bg-clip-padding bg-no-repeat
-                  focus:text-gray-700 focus:bg-white focus:border-blue-600 z-0" :value="modelValue" @input="updateInput" v-bind="$attrs">
+      <label class="absolute top-[-7px] left-[27px] z-10 text-xs">{{labelText}}</label>
+      <select :value="modelValue" @input="updateInput" v-bind="$attrs">
 
         <option v-for="option in options" v-if="optionKey">
           {{ option[optionKey] }}
