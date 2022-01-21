@@ -1,0 +1,14 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.sarathe</groupId>
+    <artifactId>sarathe</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <name>sarathe-Parent</name>
+
+	<modules>
+        <module>view</module>
+        <module>service</module>
+    </modules>
+
+</project>

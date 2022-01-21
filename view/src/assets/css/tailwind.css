@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-sans text-base antialiased text-gray-900;
+    }
+    h1 {
+        @apply text-2xl
+    }
+    h2 {
+        @apply text-xl
+    }
+}
+
+@layer components {
+    .btn {
+        @apply px-4 py-1 rounded text-white font-semibold shadow inline-block focus:outline-none
+    }
+
+    .btn-success {
+        @apply bg-green-500 text-white
+    }
+
+    .btn-danger {
+        @apply bg-red-600 text-white
+    }
+
+    .btn-info {
+        @apply bg-indigo-500 text-white
+    }
+
+    table {
+        @apply border-collapse border border-slate-400 w-full
+    }
+
+    table th {
+        @apply border border-slate-300 text-sm text-left pl-2
+    }
+
+    table td {
+        @apply text-xs border border-slate-300 pl-2
+    }
+
+
+}
