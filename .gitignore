@@ -1,2 +1,12 @@
 # Project exclude paths
 /view/target/
+.idea
+sarathe.iml
+service/target
+service/sarathe-expense.iml
+service/tailwind.config.js
+view/.idea
+view/.vscode
+view/node/
+view/node_modules
+view/sarathe-view.iml
