@@ -1,6 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "animate.css";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @layer base {
     body {
@@ -13,7 +14,7 @@
         @apply text-xl
     }
 
-    select, input[type="text"], input[type="password"] {
+    select, input[type="text"], input[type="password"], input[type="number"], input[type="date"] {
         @apply py-1.5 w-full focus:outline-none bg-white border border-solid border-gray-300 shadow px-3 rounded appearance-none block text-sm text-gray-700 bg-clip-padding bg-no-repeat  focus:text-gray-700 focus:bg-white focus:border-blue-600 z-0
     }
 
@@ -29,7 +30,7 @@
     }
 
     .btn-danger {
-        @apply bg-red-600 text-white active:bg-red-500
+        @apply bg-red-600 text-white active:bg-rose-500
     }
 
     .btn-info {
@@ -41,11 +42,11 @@
     }
 
     table th {
-        @apply border border-slate-300 text-sm text-left pl-2
+        @apply border border-slate-300 text-xs lg:text-lg text-left pl-2
     }
 
     table td {
-        @apply text-xs border border-slate-300 pl-2
+        @apply text-xs lg:text-lg border border-slate-300 pl-2
     }
 
 

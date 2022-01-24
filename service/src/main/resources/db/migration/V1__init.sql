@@ -64,11 +64,12 @@ alter table member_role add constraint member_role_fk2 foreign key (role_id) ref
 
 create table expense
 (
---     expense_id number(19,1) not null,
+    expense_id number(19,1) not null,
+    transaction_id varchar(45) not null unique ,
     amount double(30) not null,
     category varchar(30) not null,
     notes varchar(30),
-    type varchar(30) not null,
+    payment_type varchar(30) not null,
     expense_date varchar(30) not null,
     expense_paid_by varchar(30) not null,
     member_id number(19,1) not null,
@@ -78,5 +79,5 @@ create table expense
     last_upd_ts timestamp(9) not null default current_timestamp on update current_timestamp
 );
 
-alter table expense add constraint expense_pk primary key (member_id);
+alter table expense add constraint expense_pk primary key (expense_id);
 alter table expense add constraint expense_member_fk foreign key (member_id) references member (member_id);

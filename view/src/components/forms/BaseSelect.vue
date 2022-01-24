@@ -34,7 +34,7 @@ defineProps({
     default: ''
   }
 })
-const emit = defineEmits(['onInput'])
+const emit = defineEmits(['update:modelValue'])
 const updateInput = (e) => {
   emit('update:modelValue', e.target.value)
 }

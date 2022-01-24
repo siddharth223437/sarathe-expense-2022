@@ -3,9 +3,14 @@ package com.sarathe.expense.models;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 @Data
@@ -36,16 +41,21 @@ public class Member extends WithMetaData {
     @JoinColumn(name = "house_id")
     private House house;
 
-    @ElementCollection()
-    @CollectionTable(name = "expense",joinColumns = @JoinColumn(name = "member_id"))
-    private Set<Expense> expenses = new HashSet<>();
+//    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+//    private Set<Expense> expenses = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "member_role", joinColumns = @JoinColumn(name = "member_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Roles> roles = new HashSet<>();
 
-    public interface MemberRepository extends JpaRepository<Member,Long> {
+//    public void addExpenses(Expense expenses) {
+//        this.expenses.add(expenses);
+//    }
 
+    @Repository
+    public interface MemberRepository extends JpaRepository<Member,Long> {
         public Set<Member> findMemberByHouse(House house);
+        public Member findByEmail(String email);
     }
 }

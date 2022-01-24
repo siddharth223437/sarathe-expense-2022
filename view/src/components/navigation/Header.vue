@@ -5,7 +5,7 @@
         Expense
       </div>
       <div>
-        <Menu :items="['Logout']" @onItemClick="handleMenuOnClick" class="hidden sm:block"/> <!--visible on medium and up screen-->
+        <Menu :items="['Add new expense','Logout']" @onItemClick="handleMenuOnClick" class="hidden sm:block"/> <!--visible on medium and up screen-->
 
         <button @click="toggleSidebar" class="sm:hidden"><!--visible only on small screens-->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -20,7 +20,14 @@
 <script setup>
 import Menu from "./Menu.vue";
 import { ref } from 'vue'
+import {useRouter} from "vue-router";
+
+const router = useRouter();
+
 const handleMenuOnClick = (e) => {
+  if(e === 'Add new expense') {
+    router.push('/add')
+  }
   console.log(e)
 }
 const emit = defineEmits(['onSmallScreenMenuClick']);
