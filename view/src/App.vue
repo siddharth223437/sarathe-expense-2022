@@ -4,6 +4,7 @@ import { ref } from 'vue'
 const menuValue = ref(false);
 const handleSmallScreenMenu = (e) => {
   menuValue.value = e;
+  console.log(menuValue.value)
 }
 
 const menuArr = [

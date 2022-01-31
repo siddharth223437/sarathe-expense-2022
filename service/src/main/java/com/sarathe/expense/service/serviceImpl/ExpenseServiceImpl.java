@@ -4,6 +4,7 @@ import com.sarathe.expense.models.Expense;
 import com.sarathe.expense.models.Member;
 import com.sarathe.expense.service.IExpense;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -15,7 +16,7 @@ import java.util.UUID;
 @Service
 public class ExpenseServiceImpl implements IExpense {
 
-    private static final String email = "sarathe@mail.usf.edu";
+//    private static final String email = "sarathe@mail.usf.edu";
 
     private final Expense.ExpenseRepository expenseRepository;
     private final Member.MemberRepository memberRepository;
@@ -27,7 +28,7 @@ public class ExpenseServiceImpl implements IExpense {
 
     @Override
     public Set<Expense> findExpenseAmountByDate(LocalDate sourceDate, LocalDate targetDate) {
-        Member byEmail = memberRepository.findByEmail(email);
+        Member byEmail = memberRepository.findByUsername(getCurrentUser());
         Set<Expense> byExpensesExpenseDateBetween = expenseRepository.findExpenseByExpenseDateBetweenAndMember(sourceDate, targetDate,byEmail);
         return byExpensesExpenseDateBetween;
     }
@@ -39,7 +40,7 @@ public class ExpenseServiceImpl implements IExpense {
             expense.setTransactionId(UUID.randomUUID());
         }
         //delete this later, this is just for testing
-        Member byEmail = memberRepository.findByEmail(email);
+        Member byEmail = memberRepository.findByUsername(getCurrentUser());
         expense.setMember(byEmail);
         expenseRepository.save(expense);
     }
@@ -47,5 +48,9 @@ public class ExpenseServiceImpl implements IExpense {
     @Override
     public void deleteExpense(Long id) {
         expenseRepository.deleteById(id);
+    }
+
+    private String getCurrentUser() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 }

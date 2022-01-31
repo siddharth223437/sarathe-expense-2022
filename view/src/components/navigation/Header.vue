@@ -27,6 +27,8 @@ const router = useRouter();
 const handleMenuOnClick = (e) => {
   if(e === 'Add new expense') {
     router.push('/add')
+  }else if(e === 'Logout'){
+    router.push('/logout')
   }
   console.log(e)
 }

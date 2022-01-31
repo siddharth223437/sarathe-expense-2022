@@ -24,6 +24,9 @@ public class Member extends WithMetaData {
     @Column(name = "member_id")
     private Long id;
 
+    @Column(name = "username")
+    private String username;
+
     @Embedded
     private MemberBio memberBio;
 
@@ -57,5 +60,6 @@ public class Member extends WithMetaData {
     public interface MemberRepository extends JpaRepository<Member,Long> {
         public Set<Member> findMemberByHouse(House house);
         public Member findByEmail(String email);
+        public Member findByUsername(String username);
     }
 }
